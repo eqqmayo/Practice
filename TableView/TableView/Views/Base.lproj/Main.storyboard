@@ -83,11 +83,62 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="EiS-xN-WRE" id="tHa-cp-6sf"/>
+                        <segue destination="pcj-6o-Mpl" kind="presentation" identifier="toDetail" id="R07-r5-Tbs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="57.251908396946561" y="-34.507042253521128"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="AWY-kM-dGe">
+            <objects>
+                <viewController id="pcj-6o-Mpl" customClass="DetailViewController" customModule="TableView" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vhw-Dr-Htx">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="KHQ-5R-0Tz">
+                                <rect key="frame" x="71.666666666666686" y="100.00000000000003" width="250" height="410.66666666666674"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JX7-bi-8cg">
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="250" id="BP1-4Y-ieF"/>
+                                            <constraint firstAttribute="width" constant="250" id="rCT-1V-dov"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wO4-M9-EBG">
+                                        <rect key="frame" x="103.66666666666667" y="310" width="42.666666666666671" height="20.333333333333314"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RoW-xr-JOr">
+                                        <rect key="frame" x="104.33333333333333" y="390.33333333333331" width="41.333333333333329" height="20.333333333333314"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0Ui-ok-KyB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="KHQ-5R-0Tz" firstAttribute="top" secondItem="0Ui-ok-KyB" secondAttribute="top" constant="100" id="BrZ-x0-7nz"/>
+                            <constraint firstItem="KHQ-5R-0Tz" firstAttribute="centerX" secondItem="Vhw-Dr-Htx" secondAttribute="centerX" id="Bsn-Da-OCy"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="movieDescription" destination="RoW-xr-JOr" id="P8E-Mb-Ma5"/>
+                        <outlet property="movieImage" destination="JX7-bi-8cg" id="Cdg-ej-ACc"/>
+                        <outlet property="movieTitle" destination="wO4-M9-EBG" id="5Ym-I0-Z33"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BIA-qB-MhQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="861.83206106870227" y="-32.394366197183103"/>
         </scene>
     </scenes>
     <resources>
