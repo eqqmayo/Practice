@@ -24,4 +24,9 @@ class DataManager {
     func getMovieData() -> [Movie] {
         return moviesArray
     }
+    
+    func addMovieData() {
+        let movie = Movie(image: UIImage(named: "Image 2.png"), title: "패스트라이브즈", description: "전생과 인연")
+        moviesArray.append(movie)
+    }
 }

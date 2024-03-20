@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     var moviesArray: [Movie] = []
+    
     var movieDataManager = DataManager()
     
     @IBOutlet weak var tableView: UITableView!
@@ -20,7 +21,15 @@ class ViewController: UIViewController {
         tableView.delegate = self
         movieDataManager.makeMovieData()
         moviesArray = movieDataManager.getMovieData()
+        
+        title = "3월의 영화"
     }
+    
+    @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
+//        movieDataManager.addMovieData()
+//        tableView.reloadData()
+    }
+    
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
@@ -38,8 +47,9 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "toDetail", sender: indexPath)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -48,6 +58,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             let indexPath = sender as! IndexPath
             
             detailVC.movieData = moviesArray[indexPath.row]
+            
         }
     }
     
