@@ -9,7 +9,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    private lazy var nextButton: UIButton = {
+    private lazy var loginButton: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = UIColor(hexCode: "686de0")
         button.setTitle("Login", for: .normal)
@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
         button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -28,22 +28,34 @@ class LoginViewController: UIViewController {
     }
 
     func makeUI() {
-        view.addSubview(nextButton)
+        view.addSubview(loginButton)
         
         NSLayoutConstraint.activate([
-            nextButton.widthAnchor.constraint(equalToConstant: 120),
-            nextButton.heightAnchor.constraint(equalToConstant: 45),
-            nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            nextButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            loginButton.widthAnchor.constraint(equalToConstant: 120),
+            loginButton.heightAnchor.constraint(equalToConstant: 45),
+            loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loginButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
     
+    @objc func loginButtonTapped() {
+        
+        if let presentingVC = presentingViewController { // 옵셔널 바인딩
+            let tabBarCon = presentingVC as! UITabBarController   // 탭바에 접근하기
+            let nav = tabBarCon.viewControllers?[0] as! UINavigationController  // 네비게이션바에 접근하기
+            let firstVC = nav.viewControllers[0] as! FirstViewController  // FirstVC에 접근하기
+            firstVC.isLoggedIn.toggle()  // 로그인 되었다고 상태 변화시키기 (실제 앱에서 이렇게 구현할 일은 없음)
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    /*
     @objc func nextButtonTapped() {
         
         let tabBarVC = UITabBarController()
         
         let vc1 = UINavigationController(rootViewController: FirstViewController())
-        let vc2 = SecondViewController()
+        let vc2 = UINavigationController(rootViewController: SecondViewController())
         let vc3 = ThirdViewController()
         let vc4 = FourthViewController()
         let vc5 = FifthViewController()
@@ -68,6 +80,7 @@ class LoginViewController: UIViewController {
         
         present(tabBarVC, animated: true, completion: nil)
     }
+    */
 
 }
 

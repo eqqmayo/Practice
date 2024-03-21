@@ -11,12 +11,40 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        window = UIWindow(windowScene: windowScene)
+
+        let tabBarVC = UITabBarController()
+        
+        let vc1 = UINavigationController(rootViewController: FirstViewController())
+        let vc2 = UINavigationController(rootViewController: SecondViewController())
+        let vc3 = ThirdViewController()
+        let vc4 = FourthViewController()
+        let vc5 = FifthViewController()
+        
+        vc1.title = "즐겨찾기"
+        vc2.title = "최근 통화"
+        vc3.title = "연락처"
+        vc4.title = "키패드"
+        vc5.title = "음성 사서함"
+        
+        tabBarVC.setViewControllers([vc1, vc2, vc3, vc4, vc5], animated: false)
+        tabBarVC.modalPresentationStyle = .fullScreen
+        tabBarVC.tabBar.backgroundColor = .white
+        
+        guard let items = tabBarVC.tabBar.items else { return }
+        items[0].image = UIImage(systemName: "star.fill")
+        items[1].image = UIImage(systemName: "clock.fill")
+        items[2].image = UIImage(systemName: "person.circle.fill")
+        items[3].image = UIImage(systemName: "circle.grid.3x3.fill")
+        items[4].image = UIImage(systemName: "recordingtape")
+            
+        // 기본루트뷰를 탭바컨트롤러로 설정
+        window?.rootViewController = tabBarVC
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
