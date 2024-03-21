@@ -26,8 +26,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
-//        movieDataManager.addMovieData()
-//        tableView.reloadData()
+        movieDataManager.addMovieData()
+        moviesArray = movieDataManager.getMovieData()
+        tableView.reloadData()
     }
     
 }
